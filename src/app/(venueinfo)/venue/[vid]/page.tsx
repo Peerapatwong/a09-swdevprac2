@@ -1,21 +1,28 @@
+import getVenue from "@/libs/getVenue"
 import Image from "next/image"
 
 export default async function VenueDetailPage({params}: {params: Promise<{vid: string}>}) {
     const { vid } = await params
 
-    const mockVenue = new Map()
-    mockVenue.set("001", {name: "The Bloom Pavilion", imgSrc: "/img/bloom.jpg"})
-    mockVenue.set("002", {name: "Spark Space", imgSrc: "/img/sparkspace.jpg"})
-    mockVenue.set("003", {name: "The Grand Table", imgSrc: "/img/grandTable.jpg" })
-    
+    const venue = await getVenue(vid)
+
     return (
         <main className="m-10">
-            <div className="flex flex-row my-5">
-                <Image src={(mockVenue.get(vid)).imgSrc}
-                    alt="Venue Picture"
-                    width={0} height={0} sizes="100vw"
-                    className='rounded-lg w-[30%]'/>
-                    <div className='text-3xl font-bold mx-5'>{(mockVenue.get(vid)).name}</div>
+            <div className='text-2xl font-bold mx-5 text-center'>{venue.data.name}</div>
+            <div className="flex flex-row my-5 justify-center gap-x-10">
+                <Image src={venue.data.picture}
+                alt="Venue Picture"
+                width={0} height={0} sizes="100vw"
+                className='rounded-lg w-[30%]'/>
+                
+                <div className="flex flex-col">
+                    <div className='text-xl font-medium mx-5'>{venue.data.name}</div>
+                    <div className='text-xl font-medium mx-5'>{`Address: ${venue.data.address}`}</div>
+                    <div className='text-xl font-medium mx-5'>{`District: ${venue.data.district}`}</div>
+                    <div className='text-xl font-medium mx-5'>{`Province: ${venue.data.province}`}</div>
+                    <div className='text-xl font-medium mx-5'>{`Postal code: ${venue.data.postalcode}`}</div>
+                    <div className='text-xl font-medium mx-5'>{`Daily rate: ${venue.data.dailyrate}`}</div>
+                </div>
             </div>
         </main>
     )
