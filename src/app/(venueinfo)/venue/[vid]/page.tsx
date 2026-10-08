@@ -15,12 +15,13 @@ export default async function VenueDetailPage({params}: {params: Promise<{vid: s
                 width={0} height={0} sizes="100vw"
                 className='rounded-lg w-[30%]'/>
                 
-                <div className="flex flex-col">
+                <div className="flex flex-col gap-y-5">
                     <div className='text-xl font-medium mx-5'>{`Address: ${venue.data.address}`}</div>
                     <div className='text-xl font-medium mx-5'>{`District: ${venue.data.district}`}</div>
                     <div className='text-xl font-medium mx-5'>{`Province: ${venue.data.province}`}</div>
                     <div className='text-xl font-medium mx-5'>{`Postal code: ${venue.data.postalcode}`}</div>
                     <div className='text-xl font-medium mx-5'>{`Daily rate: ${venue.data.dailyrate}`}</div>
+                    <div className='text-xl font-medium mx-5'>{`Daily rate: ${venue.data.tel}`}</div>
                 </div>
             </div>
         </main>
