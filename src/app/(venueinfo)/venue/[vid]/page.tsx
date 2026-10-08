@@ -16,7 +16,6 @@ export default async function VenueDetailPage({params}: {params: Promise<{vid: s
                 className='rounded-lg w-[30%]'/>
                 
                 <div className="flex flex-col">
-                    <div className='text-xl font-medium mx-5'>{venue.data.name}</div>
                     <div className='text-xl font-medium mx-5'>{`Address: ${venue.data.address}`}</div>
                     <div className='text-xl font-medium mx-5'>{`District: ${venue.data.district}`}</div>
                     <div className='text-xl font-medium mx-5'>{`Province: ${venue.data.province}`}</div>
